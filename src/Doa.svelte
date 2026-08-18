@@ -22,6 +22,10 @@ Ya Tuhanku, berilah pemahaman (agama) kepada kami dan berilah pemahaman kepada k
 </script>
 
 <div class="doa-page">
+  <div class="top-bar">
+    <a class="back-btn" href="/">← Kembali</a>
+  </div>
+
   <h1>Doa Selesai Mengaji</h1>
   {#each doaSections as section}
     <div class="prayer-block">
