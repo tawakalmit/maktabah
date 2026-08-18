@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;500;600;700&display=swap');
+
+:root{
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Lora', serif;
+  --font-arabic: 'Scheherazade New', 'Amiri', 'Traditional Arabic', serif;
+}
+
+/* Light theme (default) */
+:root{
+  --bg: #faf7f0;
+  --fg: #1a2e26;
+  --card-bg: #ffffff;
+  --secondary-bg: #eef5f0;
+  --primary: #a8823a;
+  --accent: #c9a84c;
+  --muted-fg: #6b8f7c;
+  --border: #ddd8c4;
+}
+
+/* Dark theme (override when data-theme="dark") */
+[data-theme="dark"]{
+  --bg: #000000;
+  --fg: #f2ead8;
+  --card-bg: #0b0b0b;
+  --secondary-bg: #0f0f0f;
+  --primary: #c9a84c;
+  --accent: #e8c96a;
+  --muted-fg: #9aa897;
+  --border: #111111;
+}
+
+html,body,#app{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-sans);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overscroll-behavior-y: none;
+  position:relative;
+}
+
+/* subtle geometric pattern overlay */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.06;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><g fill="none" stroke="%23c9a84c" stroke-opacity="0.08"><circle cx="100" cy="100" r="90"/></g></svg>');
+  background-repeat:repeat;
+}
+
+.doa-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 18px 32px;
+}
+
+.doa-page h1 {
+  margin: 0 0 18px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  text-align: center;
+}
+
+.prayer-block {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(17,17,17,0.06);
+  border-radius: 18px;
+  padding: 18px 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  margin-bottom: 20px;
+}
+
+.prayer-block .arabic {
+  font-family: var(--font-arabic);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.9;
+  text-align: center;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  color: #1d1d1d;
+  margin: 0 0 24px;
+}
+
+.section h2 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: #2d2d2d;
+}
+
+.section p {
+  margin: 0 0 18px;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.page{ position:relative; z-index:1; padding:28px 16px 110px; max-width:720px; margin:0 auto; }
+
+.hero{ padding-top:28px; padding-bottom:16px; }
+.title{ font-family:var(--font-serif); font-size:20px; margin:0 0 8px 0 }
+.subtitle{ color:var(--muted-fg); margin:0 0 12px 0 }
+
+.menu{ display:flex; flex-direction:column; gap:14px; }
+.card{ background:var(--card-bg); border:1px solid var(--border); padding:14px 16px; border-radius:14px; box-shadow:0 6px 16px rgba(0,0,0,0.18); display:block; color:var(--fg); text-decoration:none }
+.card:hover{ transform:translateY(-2px); }
+.card .label{ font-weight:600; color:var(--fg); }
+.card .meta{ color:var(--muted-fg); font-size:13px; margin-top:6px }
+
+button.card,
+.action-btn{
+  width:100%;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  padding:14px 16px;
+  text-align:left;
+  cursor:pointer;
+  color:var(--fg);
+  font:inherit;
+  border-radius:14px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+}
+.secondary-action{ padding:14px 16px; text-align:left; }
+.inline-btn{ margin-top:10px; }
+
+.content-panel,
+.doa-content{ background:var(--card-bg); border:1px solid var(--border); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.12); }
+.doa-content h1{ font-family:var(--font-serif); margin-top:0 }
+.doa-content p{ color:var(--fg); line-height:1.6 }
+
+.bottom-nav{
+  position:fixed; left:12px; right:12px; bottom:12px; z-index:10;
+  display:flex; justify-content:center; padding:8px;
+  border-radius:18px;
+  background: rgba(255,255,255,0.78);
+  border:1px solid rgba(120,120,120,0.12);
+  backdrop-filter: blur(14px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+}
+[data-theme="dark"] .bottom-nav{ background: rgba(17,17,17,0.9); border-color: rgba(255,255,255,0.08); }
+.nav-item{ flex:1; max-width:180px; background:transparent; border:0; border-radius:12px; padding:10px 6px 8px; color:var(--fg); display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; font-weight:600; cursor:pointer; }
+.nav-item.active{ background: rgba(201,168,76,0.18); color: var(--primary); border:1px solid rgba(201,168,76,0.28); }
+.nav-icon{ font-size:18px; line-height:1; }
+
+@media(min-width:720px){
+  .page{ padding:48px 24px 110px }
+  .title{ font-size:24px }
+  .bottom-nav{ left:50%; transform:translateX(-50%); width:min(220px, calc(100% - 24px)); }
+}
